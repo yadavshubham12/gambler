@@ -1,7 +1,10 @@
 package com.blz.gambling;
 
+import java.util.Scanner;
+
 public class Gambler {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         int stake = 100;
         int bet = 1;
         int totalWon = 0;
@@ -14,18 +17,20 @@ public class Gambler {
         int maxLoss = 0;
         int luckiestDay = 0;
         int unluckiestDay = 0;
+        boolean playAgain = true;
 
-        for (int i = 0; i < 30; i++) {
-            for (int j = 0; j < 100; j++) {
-                stake = stake - bet;
-                boolean win = Math.random() < 0.5;
-                if (win) {
-                    stake = stake + bet;
-                    won = won + bet;
-                } else {
-                    loss = loss + bet;
+        while (playAgain) {
+            for (int i = 0; i < 30; i++) {
+                for (int j = 0; j < 100; j++) {
+                    stake = stake - bet;
+                    boolean win = Math.random() < 0.5;
+                    if (win) {
+                        stake = stake + bet;
+                        won = won + bet;
+                    } else {
+                        loss = loss + bet;
+                    }
                 }
-            }
                 if (won > loss) {
                     dayswon++;
                     totalWon = totalWon + won;
@@ -34,11 +39,8 @@ public class Gambler {
                         luckiestDay = i + 1;
                     }
                 } else {
-                    daysloss++;
-                    totalLoss = totalLoss + loss;
-                    if (loss > maxLoss) {
-                        maxLoss = loss;
-                        unluckiestDay = i + 1;
+                    System.out.println( );
+
                     }
                 }
                 stake = 100;
