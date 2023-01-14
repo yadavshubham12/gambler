@@ -3,27 +3,32 @@ package com.blz.gambling;
 public class Gambler {
     public static void main(String[] args) {
         int stake = 100;
+        int days = 20;
         int bet = 1;
-        int days = 0;
-        int wins = 0;
-        int losses = 0;
+        int totalWon = 0;
+        int totalLoss = 0;
+        int won = 0;
+        int loss = 0;
 
-        for (int i = 0; i < 100; i++) {
-            int originalStake = stake;
-            stake = stake - bet;
-            boolean win = Math.random() < 0.5;
-            if (win) {
-                stake = stake + bet;
-                wins++;
-            } else {
-                losses++;
+        for (int i = 0; i < 20; i++) {
+            days++;
+          for (int j = 0; j < 100; j++){
+              stake = stake - bet;
+                boolean win = Math.random() < 0.5;
+                if (win) {
+                    stake = stake + bet;
+                    won = won + bet;
+                    totalWon = totalWon + won;
+                } else {
+                    loss = loss + bet;
+                    totalLoss = totalLoss + loss;
+                }
+                    stake = 100;
+                }
             }
-            if (stake <= originalStake / 2) {
-                break;
-            }
+        System.out.println("Total days played " + days);
+        System.out.println(" Total amount won " + totalWon);
+        System.out.println(" Total amount Loss " + totalLoss);
         }
-        System.out.println("Resign for the day " + stake);
-            System.out.println(" Wins " + wins);
-            System.out.println(" Losses " + losses);
-        }
+
     }
